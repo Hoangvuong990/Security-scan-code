@@ -21,7 +21,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/hoangvuong990/security-scan:latest'
+  image: 'docker://ghcr.io/securityscanner945/security-scan:latest'
 
   env:
     SCAN_MODE: ${{ inputs.mode }}
