@@ -1,0 +1,29 @@
+lname: 'Security AI Scanner'
+description: 'AI-powered security scanning using Snyk and Gemini'
+author: 'Security'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  mode:
+    description: 'Scan Mode (all, folders, snippet)'
+    required: false
+    default: 'all'
+  folders:
+    description: 'JSON array of folders to scan (if mode=folders)'
+    required: false
+    default: ''
+  code:
+    description: 'Code snippet to scan (if mode=snippet)'
+    required: false
+    default: ''
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/${{ github.repository }}/security-scan:latest'
+
+  env:
+    SCAN_MODE: ${{ inputs.mode }}
+    SCAN_FOLDERS: ${{ inputs.folders }}
+    SCAN_CODE: ${{ inputs.code }}
