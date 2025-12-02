@@ -1,4 +1,4 @@
-lname: 'Security AI Scanner'
+name: 'Security AI Scanner'
 description: 'AI-powered security scanning using Snyk and Gemini'
 author: 'Security'
 branding:
@@ -18,12 +18,16 @@ inputs:
     description: 'Code snippet to scan (if mode=snippet)'
     required: false
     default: ''
+  question:
+    description: 'Question for AI analysis'
+    required: false
+    default: ''
 
 runs:
   using: 'docker'
-  image: 'docker://docker.io/securityscanner945/security-scan:latest' 
-
+  image: 'docker://docker.io/securityscanner945/security-scan:latest'
   env:
     SCAN_MODE: ${{ inputs.mode }}
     SCAN_FOLDERS: ${{ inputs.folders }}
     SCAN_CODE: ${{ inputs.code }}
+    SCAN_QUESTION: ${{ inputs.question }}
